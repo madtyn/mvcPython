@@ -1,0 +1,5 @@
+Babel==2.8.0
+psutil==5.8.0
+pytz==2020.1
+tkcalendar~=1.6.1
+tkfilebrowser==2.3.2
