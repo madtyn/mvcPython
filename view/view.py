@@ -33,7 +33,6 @@ except ModuleNotFoundError as e:
         sys.exit(0)
 
 
-
 class GuiView(ttk.Frame, Observer):
     ROW_MINSIZE = 5
     COL_MINSIZE = 35
