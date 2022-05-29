@@ -13,6 +13,7 @@ from tkinter.ttk import Label, Entry
 
 
 from common import deputils
+from common.constants import MISSING_DEPENDENCIES_ERROR_CODE
 from common.exceptions.exceptions import MvcError
 from common.utils import ROOT_PATH
 from view.widgets.tooltip import Tooltip
@@ -21,8 +22,8 @@ from .widgets.datetimepicker import DatetimePicker
 
 PLEASE_INSTALL_MODULES = "Please install dependency modules by doing this(use pip or pip3):\n"
 
-dependency = 'tkfilebrowser'
 
+dependency = 'tkfilebrowser'
 deputils.check_import(dependency)
 
 try:
@@ -32,7 +33,7 @@ except ModuleNotFoundError as e:
         print(PLEASE_INSTALL_MODULES)
         print("C:\\> pip install pywin32")
         print("$ pip install pywin32")
-        sys.exit(0)
+        sys.exit(MISSING_DEPENDENCIES_ERROR_CODE)
 
 
 class LayoutDialog(Dialog):

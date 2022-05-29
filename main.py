@@ -1,19 +1,20 @@
 import sys
 
-
+from common.constants import MISSING_DEPENDENCIES_ERROR_CODE
 from common.deputils import check_import, do_import
 from controller.controller import Controller
 from model.model import Model
-from view.view import GuiView
 
 PLEASE_INSTALL_MODULES = "Please install dependency modules by doing this(use pip or pip3):\n"
 
 dependencies = ['tkfilebrowser', 'tkcalendar']
 
-warning = all([check_import(dep) for dep in dependencies])
+warning = not all([check_import(dep) for dep in dependencies])
 
 if warning:
-    sys.exit(0)
+    sys.exit(MISSING_DEPENDENCIES_ERROR_CODE)
+
+from view.view import GuiView
 
 try:
     for i in range(len(dependencies)):

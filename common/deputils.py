@@ -1,4 +1,5 @@
 import importlib
+import importlib.util
 import sys
 
 PLEASE_INSTALL_MODULES = "Please install dependency modules by doing this(use pip or pip3):\n"
@@ -14,14 +15,15 @@ def check_import(dependency):
     :return: True if the module is available, False otherwise
     """
     result = False
-    not_found = dependency not in sys.modules
     spec_not_found = (spec := importlib.util.find_spec(dependency)) is None
 
-    if not_found and spec_not_found:
-        result = True
+    if spec_not_found:
         print(PLEASE_INSTALL_MODULES)
-        print(f"> pip3 install {dependency!r}")
+        print(f"> pip install {dependency!r}")
+    else:
+        result = True
 
+    print(f'Checking dependency {dependency}: {result}')
     return result
 
 
