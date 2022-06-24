@@ -24,7 +24,6 @@ PLEASE_INSTALL_MODULES = "Please install dependency modules by doing this(use pi
 
 
 dependency = 'tkfilebrowser'
-deputils.check_import(dependency)
 
 try:
     tkfilebrowser = deputils.do_import(dependency)
